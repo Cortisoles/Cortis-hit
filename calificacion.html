@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataformas de Música</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="mi-header">
+        <div class="barra-superior">
+            <h1>🎵 Historia de la Música</h1>
+
+            <!-- Botón con la acción directa incorporada -->
+            <button id="boton-menu" class="btn-menu" aria-label="Abrir menú" onclick="document.getElementById('navegacion').classList.toggle('menu-oculto')">
+                ☰
+            </button>
+        </div>
+
+        <nav id="navegacion" class="menu-oculto">
+            <a href="index.html">🏠 Inicio</a>
+            <a href="calificacion.html" aria-current="page">🎧 Plataformas</a>
+            <a href="Recomendacion.html">🎤 Artistas</a>
+        </nav>
+    </header>
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="contenedor-app">
+
+        <!-- PRESENTACIÓN -->
+        <section class="presentacion">
+            <h2>La era del Streaming Musical</h2>
+            <p>
+                Atrás quedaron los días de los discos de vinilo, los casetes y los CDs como única opción. Hoy en día, la música vive en la nube.
+            </p>
+            <p>
+                Las plataformas de streaming han revolucionado la forma en que descubrimos, compartimos y escuchamos a nuestros artistas favoritos, dándonos acceso a millones de canciones en nuestro bolsillo.
+            </p>
+        </section>
+
+        <!-- TARJETAS DE PLATAFORMAS -->
+        <section class="contenido" id="plataformas">
+            <div class="titulo-seccion">
+                <span class="etiqueta">APPS DE STREAMING</span>
+                <h2>📱 ¿Dónde escuchamos música hoy?</h2>
+                <p>Descubre las características de las aplicaciones más populares del mercado.</p>
+            </div>
+
+            <div class="grid-servicios">
+
+                <!-- Spotify -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">🟢</span>
+                    <h3>Spotify</h3>
+                    <p>El gigante del streaming. Destaca por sus listas de reproducción personalizadas y su algoritmo para descubrir nueva música.</p>
+                </div>
+
+                <!-- Apple Music -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">🍎</span>
+                    <h3>Apple Music</h3>
+                    <p>Ofrece audio de alta resolución (Lossless) y Audio Espacial, con una integración perfecta en el ecosistema de Apple.</p>
+                </div>
+
+                <!-- YouTube Music -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">▶️</span>
+                    <h3>YouTube Music</h3>
+                    <p>Ideal para encontrar covers, presentaciones en vivo y un catálogo inmenso gracias a la base de datos de YouTube.</p>
+                </div>
+
+                <!-- SoundCloud -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">☁️</span>
+                    <h3>SoundCloud</h3>
+                    <p>La cuna de la música independiente y electrónica. Perfecta para descubrir artistas emergentes y remixes no oficiales.</p>
+                </div>
+
+                <!-- Tidal -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">🌊</span>
+                    <h3>Tidal</h3>
+                    <p>Conocida por su calidad de sonido superior (Hi-Fi) y por pagar mejores regalías a los artistas y creadores.</p>
+                </div>
+
+                <!-- Amazon Music -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">📦</span>
+                    <h3>Amazon Music</h3>
+                    <p>Se integra con Alexa y los dispositivos Echo. Su versión Unlimited compite directamente con los catálogos más grandes.</p>
+                </div>
+
+                <!-- Deezer -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">🎵</span>
+                    <h3>Deezer</h3>
+                    <p>Popular en Europa y Latinoamérica. Su función "Flow" crea una mezcla infinita basada en tus gustos personales.</p>
+                </div>
+
+                <!-- Bandcamp -->
+                <div class="card">
+                    <span class="icon" aria-hidden="true">⛺</span>
+                    <h3>Bandcamp</h3>
+                    <p>Una tienda en línea donde puedes apoyar directamente a los artistas comprando su música en formato digital o físico.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="mi-footer">
+        <p>🎵 <strong>Historia de la Música</strong></p>
+        <p>Explora, escucha y aprende. La música conecta generaciones.</p>
+    </footer>
+
+</body>
+</html>

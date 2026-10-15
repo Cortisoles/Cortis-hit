@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Historia de la Música</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+    <header class="mi-header">
+        <div class="barra-superior">
+            <h1>🎵 Historia de la Música</h1>
+      <button id="boton-menu" class="btn-menu" aria-label="Abrir menú" onclick="document.getElementById('navegacion').classList.toggle('menu-oculto')">
+    ☰
+</button>
+        </div>
+
+        <nav id="navegacion" class="menu-oculto">
+            <a href="index.html">🏠 Inicio</a>
+            <a href="calificacion.html">📝 Plataformas</a>
+            <a href="Recomendacion.html">🎤 Artistas </a>
+        </nav>
+    </header>
+
+
+    <!-- CONTENEDOR PRINCIPAL -->
+    <div class="contenedor-app">
+
+        <!-- PRESENTACIÓN -->
+        <section class="presentacion">
+
+            <h2>Un viaje por la historia de la música</h2>
+
+            <p>
+                La música ha acompañado al ser humano desde las primeras
+                civilizaciones. A través de los siglos ha evolucionado,
+                creando nuevos estilos, instrumentos y formas de expresión.
+            </p>
+
+            <p>
+                Desde los antiguos rituales hasta los sonidos digitales,
+                la música ha acompañado a la humanidad, reflejando sus
+                emociones, culturas y transformaciones.
+            </p>
+
+            <p>
+                Explora diferentes géneros musicales, conoce sus orígenes
+                y descubre cómo han influido en el mundo.
+            </p>
+
+            <a href="#generos" class="btn-principal">
+                Explorar géneros <span aria-hidden="true">↓</span>
+            </a>
+        </section>
+
+        <!-- IMAGEN PRINCIPAL -->
+        <section class="seccion-media" aria-label="Introducción visual">
+            <img
+                src="imagenes/Historia.jpg"
+                alt="Imagen representativa de la historia de la música"
+                class="img-fluida"
+                fetchpriority="high"
+            >
+        </section>
+
+        <!-- GÉNEROS MUSICALES -->
+        <section class="contenido" id="generos">
+            <div class="titulo-seccion">
+                <span class="etiqueta">DESCUBRE Y ESCUCHA</span>
+                <h2>🎶 Explora los géneros musicales</h2>
+                <p>
+                    Selecciona una tarjeta para descubrir su historia,
+                    sus características y sus instrumentos principales.
+                </p>
+            </div>
+
+   <div class="grid-servicios">
+
+    <!-- Música clásica -->
+    <a class="card"
+       href="https://youtu.be/tpGSzH0Wlls?si=m7Btpzd9eNo6nnlt"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir música clásica en YouTube">
+
+        <span class="icon" aria-hidden="true">🎻</span>
+        <h3>Música clásica</h3>
+        <p>Compositores, orquestas y grandes obras.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Rock -->
+    <a class="card"
+       href="https://youtu.be/1w7OgIMMRc4?si=DlBAoLhmXRFDRB6T"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir Rock en YouTube">
+
+        <span class="icon" aria-hidden="true">🎸</span>
+        <h3>Rock</h3>
+        <p>Guitarras eléctricas, energía y rebeldía.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Pop -->
+    <a class="card"
+       href="https://youtu.be/4NRXx6U8ABQ?si=7ey0ZajYZqwN7i4u"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir Pop en YouTube">
+
+        <span class="icon" aria-hidden="true">🎤</span>
+        <h3>Pop</h3>
+        <p>Melodías pegadizas y sonidos actuales.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Jazz -->
+    <a class="card"
+       href="https://youtu.be/JYuyWrkwpok?si=G03qzNsxENL5-FWG"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir Jazz en YouTube">
+
+        <span class="icon" aria-hidden="true">🎷</span>
+        <h3>Jazz</h3>
+        <p>Improvisación, ritmo y libertad creativa.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Blues -->
+    <a class="card"
+       href="https://youtu.be/SgXSomPE_FY?si=suLMuUXFjXKskx4M"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir Blues en YouTube">
+
+        <span class="icon" aria-hidden="true">🎹</span>
+        <h3>Blues</h3>
+        <p>Emoción, expresión y raíces afroamericanas.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Reggae -->
+    <a class="card"
+       href="https://youtu.be/DKVB_CtU8XQ?si=qhm6Zf98JkIBa_OY"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir Reggae en YouTube">
+
+        <span class="icon" aria-hidden="true">🌴</span>
+        <h3>Reggae</h3>
+        <p>Ritmos jamaicanos y mensajes sociales.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Música electrónica -->
+    <a class="card"
+       href="https://youtu.be/60ItHLz5WEA?si=_07SRl_e-Ufbkx_6"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir música electrónica en YouTube">
+
+        <span class="icon" aria-hidden="true">🎧</span>
+        <h3>Música electrónica</h3>
+        <p>Sintetizadores, tecnología y experimentación.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+
+    <!-- Música urbana -->
+    <a class="card"
+       href="https://youtu.be/CTFtOOh47oo?si=N8HmGby1fDDVccob"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Descubrir música urbana en YouTube">
+
+        <span class="icon" aria-hidden="true">🎙️</span>
+        <h3>Música urbana</h3>
+        <p>Rap, hip-hop, trap y sonidos contemporáneos.</p>
+        <span class="card-link">Descubrir →</span>
+    </a>
+            </div>
+
+            <!-- AQUÍ APARECE LA INFORMACIÓN DEL GÉNERO -->
+            <section
+                id="detalle-genero"
+                class="detalle-genero"
+                aria-live="polite"
+                aria-atomic="true"
+                hidden
+            >
+                <button
+                    id="cerrar-detalle"
+                    class="btn-cerrar"
+                    type="button"
+                    aria-label="Cerrar información"
+                >✕</button>
+
+                <span id="detalle-icono" class="icon" aria-hidden="true">🎵</span>
+                <h3 id="detalle-titulo">Género musical</h3>
+                <p id="detalle-descripcion"></p>
+                <p><strong>Características:</strong> <span id="detalle-caracteristicas"></span></p>
+                <p><strong>Instrumentos:</strong> <span id="detalle-instrumentos"></span></p>
+                <p><strong>Artistas destacados:</strong> <span id="detalle-artistas"></span></p>
+            </section>
+        </section>
+
+        <!-- LÍNEA DEL TIEMPO -->
+        <section class="historia" id="historia">
+            <div class="titulo-seccion">
+                <span class="etiqueta">DEL PASADO AL PRESENTE</span>
+                <h2>📜 La evolución de la música</h2>
+                <p>Un recorrido por algunas de las grandes etapas de la historia musical.</p>
+            </div>
+
+            <div class="linea-tiempo">
+                <article class="periodo">
+                    <span class="periodo-icono">🏺</span>
+                    <div>
+                        <span class="fecha">Primeras civilizaciones</span>
+                        <h3>La Antigüedad</h3>
+                        <p>
+                            La música acompañaba rituales, ceremonias y celebraciones.
+                            Civilizaciones como Egipto, Grecia y Mesopotamia desarrollaron
+                            instrumentos y teorías musicales.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="periodo">
+                    <span class="periodo-icono">⛪</span>
+                    <div>
+                        <span class="fecha">Siglos V–XV</span>
+                        <h3>Edad Media</h3>
+                        <p>
+                            El canto gregoriano tuvo un papel importante en la música
+                            religiosa europea, mientras también se desarrollaban
+                            tradiciones musicales populares.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="periodo">
+                    <span class="periodo-icono">🎼</span>
+                    <div>
+                        <span class="fecha">Siglos XV–XVI</span>
+                        <h3>Renacimiento</h3>
+                        <p>
+                            Crecieron la polifonía, la música vocal y la composición
+                            instrumental, junto con nuevas formas de expresión artística.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="periodo">
+                    <span class="periodo-icono">🎻</span>
+                    <div>
+                        <span class="fecha">Siglos XVII–XVIII</span>
+                        <h3>Barroco y Clasicismo</h3>
+                        <p>
+                            Se desarrollaron la ópera, el concierto y la sinfonía.
+                            Destacaron compositores como Bach, Mozart y Haydn.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="periodo">
+                    <span class="periodo-icono">🎹</span>
+                    <div>
+                        <span class="fecha">Siglo XIX</span>
+                        <h3>Romanticismo</h3>
+                        <p>
+                            La música dio mayor protagonismo a la emoción, la imaginación
+                            y la expresión individual. Beethoven, Chopin y Tchaikovsky
+                            marcaron esta etapa.
+                        </p>
+                    </div>
+                </article>
+
+                <article class="periodo">
+                    <span class="periodo-icono">🎸</span>
+                    <div>
+                        <span class="fecha">Siglos XX–XXI</span>
+                        <h3>La era moderna y digital</h3>
+                        <p>
+                            El jazz, el blues, el rock, el pop, el hip-hop y la música
+                            electrónica transformaron el panorama musical. La grabación
+                            digital e internet ampliaron su alcance mundial.
+                        </p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- GALERÍA -->
+        <section class="seccion-media galeria-seccion" id="galeria">
+            <div class="titulo-seccion">
+                <span class="etiqueta">SONIDOS Y CULTURAS</span>
+                <h2>📸 La música a través del tiempo</h2>
+                <p>Instrumentos, artistas y formas de vivir la música.</p>
+            </div>
+
+            <div class="galeria-vertical">
+                <figure>
+                    <img
+                        src="imagenes/Instrumentos.jpg"
+                        alt="Instrumentos musicales de diferentes familias"
+                        class="img-proyecto"
+                        loading="lazy"
+                    >
+                    <figcaption>Los instrumentos y sus sonidos</figcaption>
+                </figure>
+
+                <figure>
+                    <img
+                        src="imagenes/Contemporaneo.jpg"
+                        alt="Representación de la música contemporánea"
+                        class="img-proyecto"
+                        loading="lazy"
+                    >
+                    <figcaption>La música en la actualidad</figcaption>
+                </figure>
+
+                <figure>
+                    <img
+                        src="imagenes/Poyoyoi.jpg"
+                        alt="Presentación musical"
+                        class="img-proyecto"
+                        loading="lazy"
+                    >
+                    <figcaption>La música como experiencia compartida</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- VIDEO -->
+        <section class="video-seccion">
+            <div class="titulo-seccion">
+                <span class="etiqueta">APRENDE DE FORMA VISUAL</span>
+                <h2>🎬 La música y su evolución</h2>
+                <p>Explora el contenido audiovisual sobre la historia musical.</p>
+            </div>
+
+            <div class="video-contenedor">
+                <iframe
+                    src="https://www.youtube.com/embed/pHaR2lDLKb0"
+                    title="Video sobre la historia de la música"
+                    loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen
+                ></iframe>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="mi-footer">
+        <p>🎵 <strong>Historia de la Música</strong></p>
+        <p>Explora, escucha y aprende. La música conecta generaciones.</p>
+        <a href="#generos">Volver a los géneros ↑</a>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // Pega aquí adentro absolutamente TODO tu código JavaScript
+            // (lo del menú de navegación, lo de los géneros, etc.)
+
+        }); 
+    </script>
+</body>
+</html>
+

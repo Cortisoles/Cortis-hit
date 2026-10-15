@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#507e54">
+    <meta name="description" content="Descubre artistas y bandas de música clásica, rock, reggae, electrónica, pop urbano, reguetón, K-pop y rap.">
+
+    <title>Artistas y bandas | Historia de la Música</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+
+    <style>
+        /* ESTILOS GENERALES */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 25px;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f7f1;
+            color: #2a263b;
+            font-family: "Segoe UI", Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .mi-header {
+            background: #3c315b;
+            color: white;
+            padding: 20px 6%;
+            box-shadow: 0 4px 15px #00000015;
+        }
+
+        .barra-superior {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .barra-superior h1 {
+            margin: 0;
+            font-size: clamp(1.3rem, 3vw, 2rem);
+        }
+
+        .btn-menu {
+            background: transparent;
+            color: white;
+            border: 1px solid #ffffff70;
+            border-radius: 10px;
+            padding: 8px 13px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        #navegacion {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        #navegacion a {
+            text-decoration: none;
+            padding: 9px 14px;
+            border-radius: 8px;
+            transition: background .2s;
+        }
+
+        #navegacion a:hover {
+            background: #ffffff20;
+        }
+
+        #navegacion.menu-oculto {
+            display: none;
+        }
+
+        /* PRESENTACIÓN */
+        .hero-artistas {
+            padding: 65px 20px;
+            text-align: center;
+            background:
+                radial-gradient(circle at 15% 20%, #ffffff20, transparent 28%),
+                linear-gradient(135deg, #31455b, #627d8a);
+            color: white;
+        }
+
+        .hero-artistas .etiqueta {
+            display: inline-block;
+            padding: 6px 13px;
+            border: 1px solid #ffffff70;
+            border-radius: 30px;
+            font-size: .8rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-artistas h2 {
+            max-width: 800px;
+            margin: 20px auto 12px;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.15;
+        }
+
+        .hero-artistas p {
+            max-width: 650px;
+            margin: 0 auto 25px;
+            color: #eef6ec;
+            font-size: 1.05rem;
+        }
+
+        .btn-explorar {
+            display: inline-block;
+            background: #f4f0df;
+            color: #31355b;
+            padding: 12px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform .2s;
+        }
+
+        .btn-explorar:hover {
+            transform: translateY(-3px);
+        }
+
+        /* FILTROS DE GÉNEROS */
+        .filtros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 28px 18px 10px;
+        }
+
+        .filtros a {
+            padding: 9px 15px;
+            background: white;
+            border: 1px solid #d8e4d7;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: .92rem;
+            transition: background .2s, color .2s;
+        }
+
+        .filtros a:hover {
+            background: #32315b;
+            color: white;
+        }
+
+        /* CONTENIDO */
+        .contenido-artistas {
+            max-width: 1250px;
+            margin: auto;
+            padding: 35px 24px 60px;
+        }
+
+        .seccion-genero {
+            margin: 25px 0 55px;
+            scroll-margin-top: 20px;
+        }
+
+        .titulo-genero {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 23px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #dce8da;
+        }
+
+        .emoji-genero {
+            display: grid;
+            place-items: center;
+            min-width: 55px;
+            height: 55px;
+            background: #e1eddf;
+            border-radius: 16px;
+            font-size: 1.8rem;
+        }
+
+        .titulo-genero h2 {
+            margin: 0;
+            color: #37315b;
+            font-size: clamp(1.4rem, 3vw, 1.9rem);
+        }
+
+        .titulo-genero p {
+            margin: 3px 0 0;
+            color: #69796a;
+            font-size: .95rem;
+        }
+
+        /* TARJETAS */
+        .rejilla-artistas {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .tarjeta-artista {
+            min-width: 0;
+            overflow: hidden;
+            background: white;
+            border: 1px solid #e1e9df;
+            border-radius: 18px;
+            box-shadow: 0 5px 18px #203b2310;
+            transition: transform .25s, box-shadow .25s;
+        }
+
+        .tarjeta-artista:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 13px 28px #203b2320;
+        }
+
+        .foto-artista {
+            width: 100%;
+            height: 250px;
+            display: block;
+            object-fit: cover;
+            object-position: center 30%;
+            background: #e4ebe1;
+        }
+
+        .info-artista {
+            padding: 20px;
+        }
+
+        .numero-artista {
+            display: inline-block;
+            color: #4f4875;
+            background: #edf5e9;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: .75rem;
+            font-weight: 700;
+            letter-spacing: .5px;
+        }
+
+        .info-artista h3 {
+            margin: 12px 0 8px;
+            color: #2a263b;
+            font-size: 1.3rem;
+            line-height: 1.3;
+        }
+
+        .info-artista p {
+            color: #616370;
+            font-size: .94rem;
+            margin: 0 0 17px;
+        }
+
+        .enlace-artista {
+            display: inline-block;
+            color: #35396d;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .enlace-artista:hover {
+            text-decoration: underline;
+        }
+
+        /* PIE DE PÁGINA */
+        .mi-footer {
+            padding: 35px 20px;
+            text-align: center;
+            background: #28243f;
+            color: white;
+        }
+
+        .mi-footer p {
+            margin: 6px;
+        }
+
+        .mi-footer a {
+            display: inline-block;
+            margin-top: 10px;
+            color: #dcebd5;
+        }
+
+        /* ADAPTACIÓN A PANTALLAS */
+        @media (max-width: 800px) {
+            .rejilla-artistas {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 16px;
+            }
+
+            .foto-artista {
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .mi-header {
+                padding: 16px;
+            }
+
+            .hero-artistas {
+                padding: 48px 18px;
+            }
+
+            .contenido-artistas {
+                padding: 25px 15px 40px;
+            }
+
+            .rejilla-artistas {
+                grid-template-columns: 1fr;
+            }
+
+            .foto-artista {
+                height: 280px;
+            }
+
+            .tarjeta-artista {
+                max-width: 420px;
+                width: 100%;
+                margin: auto;
+            }
+
+            .titulo-genero {
+                align-items: flex-start;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ENCABEZADO Y MENÚ -->
+    <header class="mi-header">
+        <div class="barra-superior">
+            <h1>🎵 Universo Musical</h1>
+
+            <button
+                id="boton-menu"
+                class="btn-menu"
+                type="button"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+                aria-controls="navegacion">
+                ☰
+            </button>
+        </div>
+
+        <nav id="navegacion" class="menu-oculto">
+            <a href="index.html">🏠 Inicio</a>
+            <a href="calificacion.html">📝 Plataformas</a>
+            <a href="Recomendacion.html" aria-current="page">🎤 Artistas</a>
+          
+        </nav>
+    </header>
+
+    <!-- PORTADA -->
+    <section class="hero-artistas">
+        <span class="etiqueta">DESCUBRE NUEVOS SONIDOS</span>
+
+        <h2>Artistas que transformaron la música</h2>
+
+        <p>
+            Desde las melodías del piano hasta los ritmos del K-pop,
+            el rap y el reguetón. Conoce las historias y los sonidos
+            de artistas y bandas de diferentes generaciones.
+        </p>
+
+        <a href="#clasica" class="btn-explorar">
+            Explorar artistas ↓
+        </a>
+    </section>
+
+    <!-- NAVEGACIÓN POR GÉNEROS -->
+    <nav class="filtros" aria-label="Explorar géneros musicales">
+        <a href="#clasica">🎹 Clásica</a>
+        <a href="#rock">🎸 Rock</a>
+        <a href="#reggae">🌴 Reggae</a>
+        <a href="#electronica">🎧 Electrónica</a>
+        <a href="#urbano">🎙️ Urbano y R&B</a>
+        <a href="#regueton">🔥 Reguetón</a>
+        <a href="#kpop">💿 K-pop</a>
+        <a href="#rap">🎤 Rap</a>
+    </nav>
+
+    <main class="contenido-artistas">
+
+        <!-- MÚSICA CLÁSICA -->
+        <section class="seccion-genero" id="clasica">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🎹</span>
+                <div>
+                    <h2>Música clásica y piano</h2>
+                    <p>Composiciones que emocionan a través del tiempo.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/mozart.jpg"
+                         alt="Retrato de Wolfgang Amadeus Mozart"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">COMPOSITOR</span>
+                        <h3>Wolfgang Amadeus Mozart</h3>
+                        <p>
+                            Genio del clasicismo musical, reconocido por sus
+                            óperas, conciertos y sinfonías llenos de elegancia
+                            y riqueza melódica.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Mozart+best+classical+music"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/einaudi.jpg"
+                         alt="Retrato de Ludovico Einaudi"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">PIANO CONTEMPORÁNEO</span>
+                        <h3>Ludovico Einaudi</h3>
+                        <p>
+                            Pianista y compositor italiano conocido por sus
+                            piezas minimalistas, delicadas y cinematográficas.
+                            Una recomendación para estudiar o relajarse.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Ludovico+Einaudi+experience"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/yiruma.jpg"
+                         alt="Retrato de Yiruma"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">PIANO CONTEMPORÁNEO</span>
+                        <h3>Yiruma</h3>
+                        <p>
+                            Pianista y compositor surcoreano famoso por sus
+                            melodías emotivas. Su pieza River Flows in You
+                            es una de sus obras más conocidas.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Yiruma+River+Flows+in+You"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ROCK -->
+        <section class="seccion-genero" id="rock">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🎸</span>
+                <div>
+                    <h2>Rock</h2>
+                    <p>Guitarras potentes, grandes escenarios y canciones inolvidables.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/nirvana.jpg"
+                         alt="Retrato de la banda Nirvana"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">BANDA · GRUNGE</span>
+                        <h3>Nirvana</h3>
+                        <p>
+                            Banda estadounidense liderada por Kurt Cobain.
+                            Fue fundamental para popularizar el grunge
+                            durante los años noventa.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Nirvana+Smells+Like+Teen+Spirit"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/gunsnroses.jpg"
+                         alt="Retrato de la banda Guns N' Roses"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">BANDA · HARD ROCK</span>
+                        <h3>Guns N' Roses</h3>
+                        <p>
+                            Grupo conocido por sus solos de guitarra,
+                            su energía en vivo y clásicos como
+                            Sweet Child o' Mine.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Guns+N+Roses+Sweet+Child+O+Mine"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/bonjovi.jpg"
+                         alt="Retrato de la banda Bon Jovi"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">BANDA · ROCK</span>
+                        <h3>Bon Jovi</h3>
+                        <p>
+                            Banda estadounidense que combina rock,
+                            estribillos memorables y baladas como
+                            Livin' on a Prayer.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Bon+Jovi+Livin+On+A+Prayer"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- REGGAE -->
+        <section class="seccion-genero" id="reggae">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🌴</span>
+                <div>
+                    <h2>Reggae</h2>
+                    <p>Ritmos jamaicanos, identidad cultural y mensajes de unión.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/damianmarley.jpg"
+                         alt="Retrato de Damian Marley"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">REGGAE</span>
+                        <h3>Damian Marley</h3>
+                        <p>
+                            Músico jamaicano que mezcla reggae con hip-hop
+                            y otros sonidos modernos. Es hijo de Bob Marley.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Damian+Marley+Welcome+To+Jamrock"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/jimmycliff.jpg"
+                         alt="Retrato de Jimmy Cliff"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">REGGAE</span>
+                        <h3>Jimmy Cliff</h3>
+                        <p>
+                            Cantante y actor jamaicano que ayudó a llevar
+                            el reggae a públicos internacionales con
+                            canciones llenas de esperanza.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Jimmy+Cliff+The+Harder+They+Come"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/bobmarley.jpg"
+                         alt="Retrato de Bob Marley"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">LEYENDA DEL REGGAE</span>
+                        <h3>Bob Marley</h3>
+                        <p>
+                            Figura esencial del reggae mundial, recordado
+                            por sus canciones sobre amor, paz, libertad
+                            y justicia social.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Bob+Marley+Three+Little+Birds"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ELECTRÓNICA -->
+        <section class="seccion-genero" id="electronica">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🎧</span>
+                <div>
+                    <h2>Música electrónica</h2>
+                    <p>Sintetizadores, tecnología y experiencias sonoras.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/calvinharris.jpg"
+                         alt="Retrato de Calvin Harris"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">DJ · PRODUCTOR</span>
+                        <h3>Calvin Harris</h3>
+                        <p>
+                            DJ y productor escocés que combina música
+                            electrónica con pop y éxitos bailables.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Calvin+Harris+Summer"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/daftpunk.jpg"
+                         alt="Retrato del dúo Daft Punk"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">DÚO ELECTRÓNICO</span>
+                        <h3>Daft Punk</h3>
+                        <p>
+                            Dúo francés que dejó una huella importante
+                            en la música electrónica con sus sonidos
+                            futuristas y su estética de robots.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Daft+Punk+Get+Lucky"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/martingarrix.jpg"
+                         alt="Retrato de Martin Garrix"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">DJ · EDM</span>
+                        <h3>Martin Garrix</h3>
+                        <p>
+                            DJ y productor neerlandés conocido por sus
+                            festivales, grandes drops y canciones
+                            de música electrónica de baile.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Martin+Garrix+Animals"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- URBANO Y R&B -->
+        <section class="seccion-genero" id="urbano">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🎙️</span>
+                <div>
+                    <h2>Urbano y R&B</h2>
+                    <p>Voces personales, producción contemporánea y nuevas mezclas.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/frankocean.jpg"
+                         alt="Retrato de Frank Ocean"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">R&B ALTERNATIVO</span>
+                        <h3>Frank Ocean</h3>
+                        <p>
+                            Cantautor estadounidense reconocido por sus
+                            letras íntimas, atmósferas envolventes
+                            y una propuesta innovadora de R&B.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Frank+Ocean+Pink+White"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/chrisbrown.jpg"
+                         alt="Retrato de Chris Brown"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">R&B · POP</span>
+                        <h3>Chris Brown</h3>
+                        <p>
+                            Cantante y bailarín estadounidense que mezcla
+                            R&B, pop y ritmos urbanos en sus producciones.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Chris+Brown+Forever"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/theweeknd.jpg"
+                         alt="Retrato de The Weeknd"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">R&B · POP</span>
+                        <h3>The Weeknd</h3>
+                        <p>
+                            Artista canadiense que combina R&B, pop
+                            y elementos electrónicos con una identidad
+                            sonora oscura y cinematográfica.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=The+Weeknd+Blinding+Lights"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- REGUETÓN -->
+        <section class="seccion-genero" id="regueton">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🔥</span>
+                <div>
+                    <h2>Reguetón</h2>
+                    <p>Ritmos latinos que conquistaron las pistas de baile.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/maluma.jpg"
+                         alt="Retrato de Maluma"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">REGUETÓN · POP LATINO</span>
+                        <h3>Maluma</h3>
+                        <p>
+                            Cantante colombiano que fusiona reguetón
+                            y pop latino, con éxitos que alcanzaron
+                            gran popularidad internacional.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Maluma+Hawái"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/jbalvin.jpg"
+                         alt="Retrato de J Balvin"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">REGUETÓN</span>
+                        <h3>J Balvin</h3>
+                        <p>
+                            Artista colombiano que contribuyó a expandir
+                            el reguetón globalmente con colaboraciones
+                            y una identidad visual reconocible.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=J+Balvin+Mi+Gente"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/ozuna.jpg"
+                         alt="Retrato de Ozuna"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">REGUETÓN · LATINO</span>
+                        <h3>Ozuna</h3>
+                        <p>
+                            Cantante puertorriqueño conocido por su voz
+                            melódica y por combinar reguetón con
+                            elementos de pop y música latina.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Ozuna+Se+Preparó"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- K-POP -->
+        <section class="seccion-genero" id="kpop">
+            <div class="titulo-genero">
+                <span class="emoji-genero">💿</span>
+                <div>
+                    <h2>K-pop</h2>
+                    <p>Coreografías, conceptos visuales y producción musical coreana.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/cortis.jpg"
+                         alt="Retrato del grupo CORTIS"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">GRUPO · K-POP</span>
+                        <h3>CORTIS</h3>
+                        <p>
+                            Grupo surcoreano de nueva generación asociado
+                            con una propuesta creativa que combina música,
+                            estilo visual y cultura juvenil.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=CORTIS+official+music"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/enhypen.jpg"
+                         alt="Retrato del grupo ENHYPEN"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">GRUPO · K-POP</span>
+                        <h3>ENHYPEN</h3>
+                        <p>
+                            Grupo surcoreano conocido por sus conceptos
+                            narrativos, coreografías precisas y canciones
+                            que combinan pop, electrónica y otros estilos.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=ENHYPEN+official+music+video"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/illit.jpg"
+                         alt="Retrato del grupo ILLIT"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">GRUPO FEMENINO · K-POP</span>
+                        <h3>ILLIT</h3>
+                        <p>
+                            Grupo femenino surcoreano que destaca por
+                            sus melodías pop, coreografías y una estética
+                            juvenil y soñadora.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=ILLIT+Magnetic+official"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- RAP -->
+        <section class="seccion-genero" id="rap">
+            <div class="titulo-genero">
+                <span class="emoji-genero">🎤</span>
+                <div>
+                    <h2>Rap y hip-hop</h2>
+                    <p>Rimas, identidad, narrativa y cultura urbana.</p>
+                </div>
+            </div>
+
+            <div class="rejilla-artistas">
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/eminem.jpg"
+                         alt="Retrato del rapero Eminem"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">RAP · HIP-HOP</span>
+                        <h3>Eminem</h3>
+                        <p>
+                            Rapero estadounidense conocido por sus rimas
+                            complejas, velocidad vocal y letras
+                            autobiográficas y narrativas.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Eminem+Lose+Yourself"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/tupac.jpg"
+                         alt="Retrato del rapero Tupac Shakur"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">HIP-HOP</span>
+                        <h3>Tupac Shakur</h3>
+                        <p>
+                            Rapero y actor estadounidense cuya obra abordó
+                            la desigualdad, las experiencias personales
+                            y las realidades sociales de su época.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=2Pac+Changes"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+                <article class="tarjeta-artista">
+                    <img class="foto-artista"
+                         src="imagenes/jayz.jpg"
+                         alt="Retrato del rapero Jay-Z"
+                         loading="lazy"
+                         onerror="this.onerror=null; this.src='imagenes/sin-imagen.png';">
+                    <div class="info-artista">
+                        <span class="numero-artista">RAP · HIP-HOP</span>
+                        <h3>Jay-Z</h3>
+                        <p>
+                            Rapero y empresario estadounidense reconocido
+                            por sus letras, su influencia en el hip-hop
+                            y su extensa trayectoria musical.
+                        </p>
+                        <a class="enlace-artista"
+                           href="https://www.youtube.com/results?search_query=Jay-Z+Empire+State+of+Mind"
+                           target="_blank" rel="noopener noreferrer">
+                            Escuchar música →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="mi-footer">
+        <p><strong>🎵 Universo Musical</strong></p>
+        <p>Ocho géneros, veinticuatro recomendaciones y miles de sonidos por descubrir.</p>
+        <a href="index.html">← Volver a Historia de la Música</a>
+        <br>
+        <a href="#">Volver arriba ↑</a>
+    </footer>
+
+    <!-- FUNCIONAMIENTO DEL MENÚ -->
+    <script>
+        const botonMenu = document.getElementById("boton-menu");
+        const navegacion = document.getElementById("navegacion");
+
+        botonMenu.addEventListener("click", () => {
+            const oculto = navegacion.classList.toggle("menu-oculto");
+
+            botonMenu.setAttribute("aria-expanded", String(!oculto));
+            botonMenu.setAttribute(
+                "aria-label",
+                oculto ? "Abrir menú" : "Cerrar menú"
+            );
+        });
+
+        navegacion.querySelectorAll("a").forEach(enlace => {
+            enlace.addEventListener("click", () => {
+                navegacion.classList.add("menu-oculto");
+                botonMenu.setAttribute("aria-expanded", "false");
+                botonMenu.setAttribute("aria-label", "Abrir menú");
+            });
+        });
+    </script>
+
+</body>
+</html>
